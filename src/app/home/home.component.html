@@ -8,12 +8,14 @@
             </span>
         </div>
     </div>
-    <div class="col-md-6 col-md-offset-3">
-
-        <ul>
-            <li *ngFor="let user of users">
-                {{user.username}} ({{user.firstName}} {{user.lastName}}) - <a (click)="deleteUser(user.id)">Delete</a>
-            </li>
-        </ul>
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user">
+            <form>
+                <div class="form-group user">
+                    <label for="comment" class='user__comment'>Comment</label>
+                    <input type="text" class="form-control user__comment" name="comment" [(ngModel)]="model.comment" #comment="ngModel" required />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
