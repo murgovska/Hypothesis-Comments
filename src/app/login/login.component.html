@@ -1,18 +1,20 @@
-<div class="col-md-6 col-md-offset-3 login">
-    <p class="text-center">Welcome to Hypothes.is</p>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid, 'user': true }">
-            <label for="username" class='user__username'>Username</label>
-            <input type="text" class="form-control user__username" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid, 'user': true }">
-            <label for="password" class='user__username'>Password</label>
-            <input type="password" class="form-control user__password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <div class="form-group user">
-            <button [disabled]="loading" class="btn hypothesis__button">Login</button>
-        </div>
-    </form>
+<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 login__container">
+    <div class="col-md-6 col-md-offset-3 login">
+        <p class="text-center">Welcome to Hypothes.is</p>
+        <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid, 'user': true }">
+                <label for="username" class='user__username'>Username</label>
+                <input type="text" class="form-control user__username" name="username" [(ngModel)]="model.username" #username="ngModel" required />
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid, 'user': true }">
+                <label for="password" class='user__username'>Password</label>
+                <input type="password" class="form-control user__password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+            </div>
+            <div class="form-group user">
+                <button [disabled]="loading" class="btn hypothesis__button">Login</button>
+            </div>
+        </form>
+    </div>
 </div>
