@@ -10,12 +10,28 @@
     </div>
     <div class="col-md-12 col-sm-12">
         <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user">
-            <form>
+            <form name="submitForm" (ngSubmit)="submitComment()" #submitForm="ngForm" novalidate>
                 <div class="form-group user">
-                    <label for="comment" class='user__comment'>Comment</label>
-                    <input type="text" class="form-control user__comment" name="comment" [(ngModel)]="model.comment" #comment="ngModel" required />
+                    <label for="comment" class='user__comment'>Leave your comment here</label>
+                    <textarea class="form-control user__comment" name="comment" [(ngModel)]="model.comment" #comment="ngModel"></textarea>
+                </div>
+                <div class="form-group user">
+                    <button [disabled]="loading" class="btn hypothesis__button">Submit</button>
                 </div>
             </form>
+        </div>
+
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user" [hidden]="comments.length==0">
+            <div *ngFor="let comment of comments">
+                <!-- here the avatar image and time stamp -->
+                <div> <img class="user__profile"> {{comment.username}}:
+                </div>
+                <div> {{comment.comment}}</div>
+                <div> {{comment.time}}</div>
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group" [hidden]="comments.length>0">
+            <p>Explore hypothes.is, start communicating in a different way</p>
         </div>
     </div>
 </div>

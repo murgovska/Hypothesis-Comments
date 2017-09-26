@@ -10,9 +10,11 @@
     background-color: #f1f1f3;
     .user {
         &__username,
-        &__password {
+        &__password,
+        &__comment {
             font-weight: 400;
             border-radius: 2px;
+            width: 50%;
         }
         &__details {
             color: #5e0231;
@@ -21,7 +23,7 @@
             @include icon;
             border-radius: 2px;
             border: 1px solid #f1f1f3;
-            //background-image: url('/assets/images/avatar.png');
+            background-image: url('/assets/images/avatar.png');
         }
         &__logout {
             margin: 0 5px;
