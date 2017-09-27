@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/index';
 import { UserService } from '../services/index';
 
+import * as moment from 'moment';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'home.component.html',
@@ -17,6 +19,7 @@ export class HomeComponent implements OnInit {
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.currentUser = {name: "Kristina Murgovska", username: "murgovska", password: "", avatarUrl: "/assets/images/avatar.png"};
     }
 
     ngOnInit() {
@@ -25,8 +28,8 @@ export class HomeComponent implements OnInit {
 
     submitComment()
     {
-        
-        this.comments.push({username: 'murgovska', comment: this.model.comment, time: new Date()});
+        let commentdate = moment(new Date()).format( "DD-MM-YYYY (HH:mm)");
+        this.comments.push({username: 'murgovska', comment: this.model.comment, time: commentdate});
         this.model.comment = '';
     }
 

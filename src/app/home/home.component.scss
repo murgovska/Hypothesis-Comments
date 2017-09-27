@@ -19,12 +19,6 @@
         &__details {
             color: #5e0231;
         }
-        &__profile {
-            @include icon;
-            border-radius: 2px;
-            border: 1px solid #f1f1f3;
-            background-image: url('/assets/images/avatar.png');
-        }
         &__logout {
             margin: 0 5px;
         }
@@ -43,6 +37,29 @@
     .header {
         background-color: #f1f1f3;
     }
+    .content {
+        background-color: #ffffff;
+    }
+    .comments {
+        .comment {
+            font-size: 0.75em;
+            &-date {
+                color: #5e0231;
+            }
+        }
+    }
+}
+
+table.comments th {
+    border: none;
+}
+
+table.comments td {
+    border: none;
+}
+
+table.comments tbody tr {
+    border-bottom: 0.5px solid #dbc3d0;
 }
 
 a:link,

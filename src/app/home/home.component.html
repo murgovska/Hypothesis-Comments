@@ -1,15 +1,15 @@
 <div class="home-container">
-    <div class="col-md-12 col-sm-12 header">
-        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user">
-            <span class="user__details">Kristina Murgovska</span>
+    <div class="row header">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 form-group user">
+            <span class="user__details">{{currentUser.name}}</span>
             <span class="user__details pull-right text-right">
-                <img class="user__profile">
-                <button class="btn hypothesis__button-logout"><a [routerLink]="['/login']"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></a></button>
+                <img src="{{currentUser.avatarUrl}}" class="img-thumbnail">
+                <button class="btn hypothesis__button-logout" [routerLink]="['/login']"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></button>
             </span>
         </div>
     </div>
-    <div class="col-md-12 col-sm-12">
-        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user">
+    <div class="row content">
+        <div class="col-md-12 col-sm-12 col-md-offset-1 col-sm-offset-1 form-group user">
             <form name="submitForm" (ngSubmit)="submitComment()" #submitForm="ngForm" novalidate>
                 <div class="form-group user">
                     <label for="comment" class='user__comment'>Leave your comment here</label>
@@ -21,16 +21,22 @@
             </form>
         </div>
 
-        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group user" [hidden]="comments.length==0">
-            <div *ngFor="let comment of comments">
-                <!-- here the avatar image and time stamp -->
-                <div> <img class="user__profile"> {{comment.username}}:
-                </div>
-                <div> {{comment.comment}}</div>
-                <div> {{comment.time}}</div>
-            </div>
+        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group comments" [hidden]="comments.length==0">
+            <table class='table table-responsive comments'>
+                <thead>
+                    <tr>
+                        <th colspan="2">User comments:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comment of comments" class='comment'>
+                        <td> <img class="img-thumbnail" src="{{currentUser.avatarUrl}}"> {{comment.username}}: {{comment.comment}} </td>
+                        <td class='pull-right'><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> {{comment.time}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 form-group" [hidden]="comments.length>0">
+        <div class="col-md-12 col-sm-12 col-md-offset-1 col-sm-offset-1 form-group" [hidden]="comments.length>0">
             <p>Explore hypothes.is, start communicating in a different way</p>
         </div>
     </div>
