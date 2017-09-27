@@ -13,7 +13,7 @@
             <form name="submitForm" (ngSubmit)="submitComment()" #submitForm="ngForm" novalidate>
                 <div class="form-group user">
                     <label for="comment" class='user__comment'>Leave your comment here</label>
-                    <input auto-complete [(ngModel)]="model.comment" [source]="usernames" class="form-control user__comment" name="comment" #comment="ngModel">
+                    <input auto-complete [(ngModel)]="model.comment" [source]="useroptions" class="form-control user__comment" name="comment" #comment="ngModel">
                 </div>
                 <div class="form-group user">
                     <button [disabled]="loading" class="btn hypothesis__button">Submit</button>

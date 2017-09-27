@@ -17,8 +17,10 @@ export class HomeComponent implements OnInit {
     model: any = {};
     //users: User[] = [];
     comments: any = [];
-    users : any = [{name:"Kristina", surname:"Murgovska"}, {name:"Giuseppe", surname:"Bellomo"}]
+    users : any = [{name:"Kristina", username:"Murgovska"}, {name:"Giuseppe", username:"Bellomo"}]
     usernames: string;
+    names: string;
+    useroptions: string;
    
 
     constructor(private userService: UserService) {
@@ -27,8 +29,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
-        this.usernames = _.map(this.users, 'name');
+        // /this.loadAllUsers();
+        
+        this.usernames = _.map(this.users, 'username');
+        this.names = _.map(this.users, 'name');
+        this.useroptions = _.union(this.usernames, this.names);
+        console.log(this.usernames);
+        
     }
 
     submitComment()
