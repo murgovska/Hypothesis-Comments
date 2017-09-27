@@ -4,6 +4,7 @@ import { User } from '../models/index';
 import { UserService } from '../services/index';
 
 import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -14,8 +15,11 @@ import * as moment from 'moment';
 export class HomeComponent implements OnInit {
     currentUser: User;
     model: any = {};
-    users: User[] = [];
+    //users: User[] = [];
     comments: any = [];
+    users : any = [{name:"Kristina", surname:"Murgovska"}, {name:"Giuseppe", surname:"Bellomo"}]
+    usernames: string;
+   
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -24,6 +28,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
+        this.usernames = _.map(this.users, 'name');
     }
 
     submitComment()
