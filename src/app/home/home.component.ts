@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     model: any = {};
     //users: User[] = [];
     comments: any = [];
-    users : any = [{name:"Kristina", username:"Murgovska"}, {name:"Giuseppe", username:"Bellomo"}]
+    users : any = [];
     usernames: string;
     names: string;
     useroptions: string;
@@ -25,31 +25,26 @@ export class HomeComponent implements OnInit {
 
     constructor(private userService: UserService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.currentUser = {name: "Kristina Murgovska", username: "murgovska", password: "", avatarUrl: "/assets/images/avatar.png"};
     }
 
     ngOnInit() {
-        // /this.loadAllUsers();
+        this.loadAllUsers();
         
         this.usernames = _.map(this.users, 'username');
-        this.names = _.map(this.users, 'name');
+        //this.names = _.map(this.users, 'name');
         this.useroptions = _.union(this.usernames, this.names);
-        console.log(this.usernames);
         
     }
 
     submitComment()
     {
         let commentdate = moment(new Date()).format( "DD-MM-YYYY (HH:mm)");
-        this.comments.push({username: 'murgovska', comment: this.model.comment, time: commentdate});
+        this.comments.push({username: this.currentUser.username, comment: this.model.comment, time: commentdate});
         this.model.comment = '';
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-    }
-
     private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
+        this.userService.getAll();
+        console.log(this.users)
     }
 }

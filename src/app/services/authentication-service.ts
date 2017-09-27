@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import * as _ from 'lodash';
 
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
 
     login(username: string, password: string) {
-        return this.http.post('https://jsonplaceholder.typicode.com/posts', JSON.stringify({ username: username, password: password }))
+        return this.http.get('https://demo3203312.mockable.io/users')
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
-                let user = response.json();
+                console.log(response.json())
+                let user = _.find(response.json(), { 'username': username });
+                console.log(user)
                 if (user) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
