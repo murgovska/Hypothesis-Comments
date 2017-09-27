@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    userAuthenticated : boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -23,13 +24,12 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         // reset login status
         this.authenticationService.logout();
-
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.userAuthenticated = true;
     }
 
     login() {
-        this.loading = true;
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                 },
                 error => {
                     this.alertService.error(error);
-                    this.loading = false;
                 });
+            this.userAuthenticated = this.authenticationService.authenticated;
     }
 }

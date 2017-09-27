@@ -29,10 +29,8 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
-        
-        this.usernames = _.map(this.users, 'username');
-        //this.names = _.map(this.users, 'name');
-        this.useroptions = _.union(this.usernames, this.names);
+        this.users = [{username:"murgovska", name: "Kristina"}, {username: "amore", name: "Bellomo"}];
+       
         
     }
 
@@ -44,7 +42,13 @@ export class HomeComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        this.userService.getAll();
-        console.log(this.users)
+        this.userService.getAll().subscribe(
+            data => {
+              this.users = data;
+              this.usernames = _.map(this.users, 'username');
+              this.names = _.map(this.users, 'name');
+              this.useroptions = _.union(this.usernames, this.names);
+            }
+        );
     }
 }

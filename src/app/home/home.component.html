@@ -1,9 +1,11 @@
 <div class="home-container">
     <div class="row header">
         <div class="col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 form-group user">
-            <span class="user__details">{{currentUser.name}}</span>
+            <span class="user__details">
+                <img src="{{currentUser.avatar_url}}" class="img-thumbnail profile-picture">
+                {{currentUser.name}}
+            </span>
             <span class="user__details pull-right text-right">
-                <img src="{{currentUser.avatarUrl}}" class="img-thumbnail">
                 <button class="btn hypothesis__button-logout" [routerLink]="['/login']"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i></button>
             </span>
         </div>
@@ -30,7 +32,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let comment of comments" class='comment'>
-                        <td> <img class="img-thumbnail" src="{{currentUser.avatarUrl}}"> {{comment.username}}: {{comment.comment.replace('@', '')}} </td>
+                        <td> <img class="img-thumbnail profile-picture" src="{{currentUser.avatar_url}}"> {{comment.username}}: {{comment.comment.replace('@', '')}} </td>
                         <td class='pull-right comment-date'><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i> {{comment.time}}</td>
                     </tr>
                 </tbody>
