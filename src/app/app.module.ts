@@ -11,7 +11,7 @@ import { AuthGuard } from './guards/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
-import { Ng2AutoCompleteModule } from "ng2-auto-complete";
+import { MentionModule } from 'angular2-mentions/mention';
 
 // import { RegisterComponent } from './register/index';
 
@@ -20,7 +20,7 @@ import { Ng2AutoCompleteModule } from "ng2-auto-complete";
         BrowserModule,
         FormsModule,
         HttpModule,
-        Ng2AutoCompleteModule,
+        MentionModule,
         routing
     ],
     declarations: [
