@@ -1,28 +1,21 @@
-# HypothesisComments
+SETTING UP THE PROJECT LOCALLY
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Clone the project from this git repository: https://github.com/murgovska/Hypothesis-Comments
+Make sure that you have installed node and npm on your local machine. To check that, execute the following commands:
+	node --version
+	npm --version
+If node and npm are not installed, follow the instructions given on this page in order to complete this step:	
+	https://nodejs.org/en/download/package-manager/
+Once you have node and npm installed, navigate to the Hypothesis-Comments directory.
+On the terminal, execute the command:
+	npm install.
+This command is looking for the package.json file (in which are defined all the dependencies and packages used for developing the application), creates the node_modules directory and downloads the packages to that directory.
+After this command is being executed successfully, run the command:
+	npm start
+This command is calling the ng serve command which runs a local server with livereload.
+In order to view the page, in the browser go to http://localhost:4200
+For testing purpose, you can use these login credentials:
+	username: hypothesis
+	password: pass
+, or any username from the data.json file, with password - pass. 
+Note: When referencing another user while writing a comment, please use the @ sign. Once you insert @  in the input field, all the users from the database will be listed (by name and username). 

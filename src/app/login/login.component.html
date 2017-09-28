@@ -5,17 +5,17 @@
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid, 'user': true }">
                 <label for="username" class='user__username'>Username</label>
                 <input type="text" class="form-control user__username" name="username" [(ngModel)]="model.username" #username="ngModel" required />
-                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+                <div *ngIf="f.submitted && !username.valid" class="help-block error-message">Username is required</div>
             </div>
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid, 'user': true }">
                 <label for="password" class='user__username'>Password</label>
                 <input type="password" class="form-control user__password" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                <div *ngIf="f.submitted && !password.valid" class="help-block error-message">Password is required</div>
             </div>
+            <div class="error-message text-center" [hidden]="userAuthenticated">The username and password does not match</div>
             <div class="form-group user">
                 <button class="btn hypothesis__button">Login</button>
             </div>
-            <div class="" [hidden]="userAuthenticated">The username and password does not match</div>
         </form>
     </div>
 </div>

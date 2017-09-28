@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('hypothesis-comments App', () => {
+describe('hypothesis App', () => {
   let page: AppPage;
 
   beforeEach(() => {
