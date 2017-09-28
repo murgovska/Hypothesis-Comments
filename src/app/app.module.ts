@@ -13,8 +13,6 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { MentionModule } from 'angular2-mentions/mention';
 
-// import { RegisterComponent } from './register/index';
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -28,7 +26,6 @@ import { MentionModule } from 'angular2-mentions/mention';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        // RegisterComponent
     ],
     providers: [
         AuthGuard,
@@ -39,4 +36,4 @@ import { MentionModule } from 'angular2-mentions/mention';
     bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {}

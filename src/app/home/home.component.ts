@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { User } from '../models/index';
 import { UserService } from '../services/index';
 
 import * as moment from 'moment';
@@ -13,9 +11,8 @@ import * as _ from 'lodash';
 })
 
 export class HomeComponent implements OnInit {
-    currentUser: User;
+    currentUser: any = {};
     model: any = {};
-    //users: User[] = [];
     comments: any = [];
     users : any = [];
     usernames: string;
@@ -28,10 +25,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadAllUsers();
-        this.users = [{username:"murgovska", name: "Kristina"}, {username: "amore", name: "Bellomo"}];
-       
-        
+        this.loadAllUsers();     
     }
 
     submitComment()

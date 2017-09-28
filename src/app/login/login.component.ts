@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+import {
+    Router,
+    ActivatedRoute
+} from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../services/index';
+import {
+    AlertService,
+    AuthenticationService
+} from '../services/index';
 
 @Component({
     moduleId: module.id,
@@ -13,13 +22,13 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
-    userAuthenticated : boolean;
+    userAuthenticated: boolean;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService) {}
 
     ngOnInit() {
         // reset login status
@@ -34,10 +43,11 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
+                    this.userAuthenticated = this.authenticationService.authenticated;
                 },
                 error => {
                     this.alertService.error(error);
                 });
-            this.userAuthenticated = this.authenticationService.authenticated;
+
     }
 }
